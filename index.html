@@ -4,6 +4,14 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
+<script>
+/* Phones/tablets open the full desktop layout automatically (same as Chrome "Desktop site").
+   Change DESKTOP_W to tune it. Add ?view=mobile to the URL to get the responsive mobile layout. */
+(function(){try{var DESKTOP_W=980;
+if(matchMedia('(pointer:coarse)').matches&&Math.min(screen.width,screen.height)<DESKTOP_W&&!/[?&]view=mobile/.test(location.search)){
+document.querySelector('meta[name=viewport]').setAttribute('content','width='+DESKTOP_W+',viewport-fit=cover');
+document.documentElement.classList.add('forced-desktop');}}catch(e){}})();
+</script>
 <title>Najiat Islam Rishad | CSE Student and Software Developer</title>
 <meta content="Najiat Islam Rishad is a CSE student at AIUB working across software engineering, databases, data science and embedded systems. Projects, certificates and contact." name="description"/>
 <meta content="#EAF2FA" name="theme-color"/>
@@ -96,15 +104,23 @@
 </div>
 </section>
 <section aria-labelledby="about-h" class="about" id="about">
-<div class="wrap about-panel">
-<div class="about-copy">
+<div class="about-top"><div class="wrap about-intro">
 <h2 id="about-h">About</h2>
+<div class="about-body">
 <p class="about-lead">Computer Science and Engineering student who builds practical software, database and embedded-system projects, and is looking for a team where I can keep learning and contribute reliably.</p>
-<p class="about-text">Backed by hands-on projects at AIUB, I am looking for an internship or entry-level role in real software or data work.</p>
+<p class="about-text">My studies at AIUB are backed by hands-on projects in C#, Java, PHP, SQL and Arduino, plus data analysis in R and Excel, and interface and graphic work in Photoshop and Illustrator. I am looking for an internship or entry-level role where I can apply this foundation in real software or data work.</p>
 </div>
+</div></div>
+<div class="about-stats"><div class="wrap about-strip">
 <div class="counters">
+<div class="counter"><strong data-count="2" data-dec="2">2.00</strong><span>CGPA out of 4.00</span></div>
 <div class="counter"><strong data-count="10">10</strong><span>Projects on GitHub</span></div>
 <div class="counter"><strong data-count="8">8</strong><span>Certificates</span></div>
+</div>
+<ul class="focus" data-stagger=""><li><h3>Software engineering</h3><p>SDLC-based design, UML and full-stack builds.</p></li>
+<li><h3>Relational databases</h3><p>Oracle, SQL Server and MySQL behind working apps.</p></li>
+<li><h3>Microcontrollers</h3><p>Arduino systems with sensors and alerts.</p></li>
+<li><h3>UI/UX design</h3><p>Interfaces and graphics in Photoshop and Illustrator.</p></li></ul>
 </div>
 </div>
 </section>

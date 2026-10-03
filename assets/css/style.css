@@ -586,7 +586,8 @@ main{counter-reset:sec}
   .nav{-webkit-backdrop-filter:none;backdrop-filter:none}
   .nav{background:var(--bg)}
   .hero::before{animation:none;filter:none;opacity:.7}
-  .tl-item::after,.progress{animation:none}
+  .portrait-wrap::before,.orbit-one,.orbit-two,.chip-code,.chip-data,.tl-item::after,.progress{animation:none}
+  .portrait-card{animation:none;background-size:100% 100%}
   .card::before,.proj::after,.cert::after,.skills>.card::after{display:none}
   .card,.counter{box-shadow:0 2px 8px rgba(0,43,73,.10)}
   .marquee{-webkit-mask-image:none;mask-image:none}
@@ -596,7 +597,7 @@ main{counter-reset:sec}
 /* ==========================================================
    Phones / touch: smaller project cards, straight static portrait
    ========================================================== */
-@media (max-width:700px){
+@media (pointer:coarse),(hover:none),(max-width:700px){
   .projects{gap:16px 14px}
   .proj{--pad:16px;border-radius:18px}
   .proj-top{margin-bottom:12px;gap:8px 6px}
@@ -613,13 +614,9 @@ main{counter-reset:sec}
   .proj-foot .btn{min-height:40px;font-size:.85rem;border-radius:12px;padding:6px 6px 6px 16px}
   .proj-foot .btn svg.i{width:26px;height:26px;padding:5px}
 
-  /* profile photo: straight (0deg) but alive: float, orbits, chips, gradient shimmer */
-  .portrait-card{transform:none;rotate:0deg;animation:floaty 5s ease-in-out infinite,shift 9s ease infinite}
-  .portrait-wrap::before{animation:pulse 4s ease-in-out infinite}
-  .orbit-one{animation:orbit 30s linear infinite}
-  .orbit-two{animation:orbit 40s linear infinite reverse}
-  .chip-code{animation:floaty 3.6s ease-in-out infinite}
-  .chip-data{animation:floaty 4.2s ease-in-out -1.5s infinite}
+  /* profile photo: 0 degrees, no float / tilt */
+  .portrait-card,html.forced-desktop .portrait-card{transform:none!important;rotate:0deg;animation:none!important}
+  .portrait-wrap{transform:none}
 }
 
 
@@ -627,17 +624,16 @@ main{counter-reset:sec}
    About (intro + stats) and Contact / footer
    Palette: navy #002B49, deep navy #001D32, blue #005A9C, ice #9CC3E6
    ========================================================== */
-.about{padding-block:clamp(44px,6vw,72px);border:0;background:linear-gradient(180deg,#E4EEF9 0%,#D6E6F6 100%);border-block:1px solid var(--border)}
-:root[data-theme="dark"] .about{background:linear-gradient(180deg,var(--bg-alt),var(--bg))}
-.about-panel{display:grid;grid-template-columns:1.5fr 1fr;gap:clamp(28px,6vw,72px);align-items:center}
-.about-copy h2{font-size:clamp(1.7rem,3vw,2.2rem)}
-.about-copy h2::after{content:"";display:block;width:44px;height:3px;margin-top:12px;border-radius:999px;background:var(--grad)}
-.about-lead{margin-top:18px;font:500 clamp(1.05rem,1.7vw,1.3rem)/1.45 var(--f-display);color:var(--head);max-width:44ch}
-.about-text{margin-top:12px;max-width:52ch;font-size:14.5px;line-height:1.7;color:var(--muted)}
-.about .counters{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.about .counter{padding:20px 22px;border-radius:18px;background:var(--surface);border:1px solid var(--border);box-shadow:var(--shadow)}
-.about .counter strong{font-size:clamp(2rem,3.6vw,2.6rem)}
-.about .counter span{margin-top:8px;font-size:.85rem}
+.about{padding:0;border:0;background:transparent}
+.about-top{background:radial-gradient(circle at 3% 0%,#DCE9F5,transparent 34%),#fff}
+:root[data-theme="dark"] .about-top{background:radial-gradient(circle at 3% 0%,rgba(109,179,236,.12),transparent 34%),var(--bg)}
+.about-intro{display:grid;grid-template-columns:.8fr 1.4fr;gap:clamp(24px,7vw,96px);align-items:start;padding-block:clamp(48px,7vw,88px)}
+.about-intro h2{font-size:clamp(2rem,4vw,2.75rem)}
+.about-intro h2::after{content:"";display:block;width:50px;height:3px;margin-top:14px;border-radius:999px;background:#005A9C}
+:root[data-theme="dark"] .about-intro h2::after{background:var(--primary)}
+.about-lead{font:500 clamp(1.25rem,2.3vw,1.75rem)/1.35 var(--f-display);color:var(--head)}
+.about-text{margin-top:18px;max-width:62ch;font-size:15.5px;line-height:1.75;color:var(--muted)}
+.about-stats{padding-block:var(--s8);background:var(--bg-alt);border-block:1px solid var(--border)}
 
 .contact-section{padding-block:clamp(56px,7vw,88px);background:#002B49;color:#fff}
 .contact-layout{display:grid;grid-template-columns:.8fr 1.4fr;gap:clamp(32px,7vw,96px);align-items:start}
@@ -660,39 +656,14 @@ main{counter-reset:sec}
 .foot a:hover{color:#fff}
 
 @media (max-width:899px){
-  .about-panel,.contact-layout{grid-template-columns:1fr;gap:24px}
+  .about-intro,.contact-layout{grid-template-columns:1fr;gap:24px}
 }
 @media (max-width:700px){
-  .about{padding-block:36px}
-  .about-lead{font-size:1.02rem}
-  .about-text{font-size:14px}
-  .about .counter{padding:14px 16px}
-  .about .counter strong{font-size:28px}
+  .about-stats{padding-block:40px}
+  .about-text{font-size:15px}
 }
 @media (max-width:639px){
   .contact-box{grid-template-columns:auto 1fr;padding:14px;gap:14px}
   .contact-box>a.mini-action,.contact-box-actions{grid-column:2;justify-self:start}
   .foot .wrap{flex-direction:column;align-items:center;text-align:center;gap:6px}
-}
-
-
-/* ==========================================================
-   Phones (<=700px): featured projects as a compact swipe row
-   fixed card width, equal heights, no giant full-width cards
-   ========================================================== */
-@media (max-width:700px){
-  .projects{display:flex;gap:12px;overflow-x:auto;margin-inline:-24px;padding:4px 24px 14px;scroll-snap-type:x mandatory;scroll-padding-inline:24px;-webkit-overflow-scrolling:touch;scrollbar-width:none;align-items:stretch}
-  .projects::-webkit-scrollbar{display:none}
-  .projects>.proj{flex:0 0 min(78vw,290px);scroll-snap-align:start;display:flex;flex-direction:column;grid-row:auto;padding:14px;padding-top:16px;border-radius:16px}
-  .projects>.proj.reveal{opacity:1;transform:none}
-  .projects>.proj[hidden]{display:none!important}
-  .proj-top{margin-bottom:10px}
-  .proj-top::before{font-size:1.15rem}
-  .proj h3{font-size:1rem;margin-bottom:6px}
-  .proj .desc{font-size:.8rem;margin-bottom:10px}
-  .tech{margin-bottom:10px}
-  .proj ul.feat{margin-bottom:12px;padding:10px;gap:6px;font-size:.76rem;line-height:1.4}
-  .proj ul.feat li{padding-left:20px}
-  .proj-foot{margin-top:auto}
-  .proj-foot .btn{min-height:38px;font-size:.8rem}
 }
