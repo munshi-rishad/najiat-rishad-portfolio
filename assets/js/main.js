@@ -5,29 +5,6 @@
   const root = document.documentElement;
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const fine = matchMedia('(hover: hover) and (pointer: fine)').matches;
-  const store = {
-    get: k => { try { return localStorage.getItem(k); } catch (e) { return null; } },
-    set: (k, v) => { try { localStorage.setItem(k, v); } catch (e) { /* storage blocked */ } }
-  };
-
-  /* ---------- theme ---------- */
-  const themeBtn = $('#theme-toggle');
-  const metaTheme = $('meta[name="theme-color"]');
-  const applyTheme = t => {
-    root.dataset.theme = t;
-    themeBtn.setAttribute('aria-pressed', t === 'dark');
-    themeBtn.setAttribute('aria-label', t === 'dark' ? 'Switch to light theme' : 'Switch to dark theme');
-    if (metaTheme) metaTheme.content = t === 'dark' ? '#0B1620' : '#EAF2FA';
-  };
-  applyTheme(root.dataset.theme || 'light');
-  themeBtn.addEventListener('click', () => {
-    const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
-    applyTheme(next);
-    store.set('theme', next);
-  });
-  matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
-    if (!store.get('theme')) applyTheme(e.matches ? 'dark' : 'light');
-  });
 
   /* ---------- nav: mobile menu, progress, active link ---------- */
   const nav = $('.nav');
@@ -156,19 +133,20 @@
   }
 
   /* ---------- tech marquee built from the skill chips ---------- */
-  const home = $('#home');
-  if (home) {
+  const m = $('.marquee');
+  if (m) {
     const seen = new Set(), items = [];
     $$('#skills .chip').forEach(c => {
       const im = c.querySelector('img'), t = c.textContent.trim();
       if (!im || seen.has(im.getAttribute('src'))) return;
       seen.add(im.getAttribute('src'));
-      items.push(`<span class="mq-item"><img class="${im.className}" src="${im.getAttribute('src')}" alt="" width="28" height="28">${t}</span>`);
+      items.push(`<span class="mq-item"><img src="${im.getAttribute('src')}" alt="" width="28" height="28">${t}</span>`);
     });
-    const m = document.createElement('div');
-    m.className = 'marquee'; m.setAttribute('aria-hidden', 'true');
     m.innerHTML = `<div class="mq-track">${items.join('')}${items.join('')}</div>`;
-    home.insertAdjacentElement('afterend', m);
+    // start scrolling only after fonts are ready, so item widths never change mid-animation
+    const go = () => requestAnimationFrame(() => m.classList.add('run'));
+    (document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve()).then(go);
+    setTimeout(go, 2500);
   }
 
   /* ---------- scroll reveal (staggered) ---------- */

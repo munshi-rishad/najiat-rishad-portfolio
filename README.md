@@ -6,7 +6,7 @@ Live: https://munshi-rishad.github.io/najiat-rishad-portfolio/
 ## Structure
 ```
 index.html, 404.html, robots.txt, sitemap.xml
-assets/  css/  js/  images/  icons/  docs/certificates/
+assets/  css/  js/  fonts/  images/  icons/  docs/certificates/
 ```
 
 ## Phone layout
