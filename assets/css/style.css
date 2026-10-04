@@ -597,7 +597,7 @@ main{counter-reset:sec}
 /* ==========================================================
    Projects / certificates on phones in desktop layout: 3 columns
    ========================================================== */
-@media (pointer:coarse) and (min-width:900px){.projects{grid-template-columns:repeat(3,minmax(0,1fr))}.certs{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (pointer:coarse) and (min-width:900px){.projects,.certs{grid-template-columns:repeat(3,minmax(0,1fr))}}
 
 /* hero buttons: smaller, all blue */
 .cta .btn{min-height:40px;padding:8px 18px;font-size:15px}
@@ -668,3 +668,11 @@ main{counter-reset:sec}
 @media (prefers-reduced-motion:reduce){.roles li{opacity:1;translate:none;animation:none}}
 @media (max-width:1040px){.roles{gap:7px}.roles li{padding:6px 12px 6px 9px;font-size:13px}.roles svg{width:15px;height:15px}}
 @media (max-width:639px){.roles{gap:8px;margin-top:18px}.roles li{padding:7px 13px 7px 10px;font-size:13.5px}.hero h1{font-size:clamp(1.9rem,9vw,2.4rem)}}
+
+
+/* About: intro on top, the four counters in one row below */
+.about-grid{grid-template-columns:minmax(0,1fr);gap:32px;align-items:stretch}
+.counters{grid-template-columns:repeat(3,minmax(0,1fr))}
+.about .counter{padding:18px 22px}
+@media (max-width:560px){.about .counter{padding:12px 12px}.about .counter strong{font-size:1.7rem}.about .counter span{font-size:12px}}
+

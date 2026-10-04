@@ -164,47 +164,30 @@
   }), { threshold: 0.6 });
   counters.forEach(el => { if (!reduce) el.textContent = (0).toFixed(+el.dataset.dec || 0); cio.observe(el); });
 
-  /* ---------- visitor counters (Abacus, free counter API) ----------
-     Portfolio visitors: +1 per browser on first visit.
-     GitHub visits: +1 per browser the first time a GitHub link from this page is clicked. */
+  /* ---------- portfolio visitors (Abacus, free counter API) ----------
+     +1 per browser on its first visit; hidden on localhost or if the service is down. */
   (() => {
-    const views = $('#views-card'), gh = $('#gh-card');
-    if (!views || !gh) return;
-    const base = 'https://abacus.jasoncameron.dev', ns = 'munshi-rishad.github.io';
-    const VIEWS = 'portfolio-views', GITHUB = 'github-visits';
+    const card = $('#views-card');
+    if (!card) return;
+    const base = 'https://abacus.jasoncameron.dev', ns = 'munshi-rishad.github.io', key = 'portfolio-views';
     const local = /^(localhost|127\.|0\.0\.0\.0|\[::1\])/.test(location.hostname) || location.protocol === 'file:';
-    const flag = {
-      has: k => { try { return localStorage.getItem(k) === '1'; } catch (e) { return false; } },
-      set: k => { try { localStorage.setItem(k, '1'); } catch (e) {} }
-    };
-    const call = (kind, key) => fetch(`${base}/${kind}/${ns}/${key}`).then(r => {
+    const seen = (() => { try { return localStorage.getItem('viewed') === '1'; } catch (e) { return false; } })();
+    const call = kind => fetch(`${base}/${kind}/${ns}/${key}`).then(r => {
       if (r.status === 404) return null;
       if (!r.ok) throw 0;
       return r.json().then(d => { if (typeof d.value !== 'number') throw 0; return d.value; });
     });
-    const show = (card, v) => {
-      const n = card.querySelector('strong');
-      n.dataset.count = v;
-      card.classList.remove('is-pending');
-      run(n);
-    };
-    const off = card => { card.hidden = true; };
-    if (local) { off(views); off(gh); return; }
-
-    (flag.has('viewed') ? call('get', VIEWS).then(v => v === null ? call('hit', VIEWS) : v) : call('hit', VIEWS))
-      .then(v => { if (v === null) throw 0; flag.set('viewed'); show(views, v); })
-      .catch(() => off(views));
-
-    call('get', GITHUB).then(v => show(gh, v === null ? 0 : v)).catch(() => off(gh));
-
-    let busy = false;
-    document.addEventListener('click', e => {
-      const a = e.target.closest('a[href^="https://github.com/munshi-rishad"]');
-      if (!a || busy || flag.has('ghclick')) return;
-      busy = true;
-      call('hit', GITHUB).then(v => { if (v !== null) { flag.set('ghclick'); show(gh, v); } })
-        .catch(() => {}).then(() => { busy = false; });
-    });
+    if (local) { card.hidden = true; return; }
+    (seen ? call('get').then(v => v === null ? call('hit') : v) : call('hit'))
+      .then(v => {
+        if (v === null) throw 0;
+        try { localStorage.setItem('viewed', '1'); } catch (e) {}
+        const n = card.querySelector('strong');
+        n.dataset.count = v;
+        card.classList.remove('is-pending');
+        run(n);
+      })
+      .catch(() => { card.hidden = true; });
   })();
 
   /* ---------- cursor glow + magnetic primary buttons (desktop only) ---------- */
