@@ -90,9 +90,6 @@ svg.i{width:20px;height:20px;flex:none;fill:none;stroke:currentColor;stroke-widt
   radial-gradient(50% 45% at 8% 92%,rgba(94,163,206,.22),transparent 70%),var(--bg)}
 .hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:var(--s8);align-items:center}
 .hero h1{font-size:clamp(2.6rem,7vw,4.9rem);letter-spacing:-.025em}
-.role{margin-top:var(--s2);font-size:clamp(1.15rem,2.4vw,1.5rem);color:var(--accent-text);font-family:var(--f-display);font-weight:600;min-height:1.6em}
-.role .caret{display:inline-block;width:2px;height:1.1em;margin-left:3px;vertical-align:-.15em;background:currentColor;animation:blink 1s steps(1) infinite}
-.intro{margin-top:var(--s3);max-width:52ch;font-size:1.08rem;color:var(--muted)}
 .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:var(--s4)}
 
 /* ---------- hero portrait ---------- */
@@ -228,7 +225,6 @@ svg.i{width:20px;height:20px;flex:none;fill:none;stroke:currentColor;stroke-widt
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition-duration:.01ms!important;transition-delay:0s!important}
   .js .reveal,.js .chips .chip{opacity:1;transform:none;scale:1}
-  .role .caret{display:none}
 }
 
 /* ==========================================================
@@ -246,8 +242,6 @@ h2,h3{font-family:var(--f-display);font-weight:600}
 h3,.proj h3,.cert h3,.tl-item h3{font-family:var(--f-display);font-size:22px;line-height:1.2;letter-spacing:-.01em;font-weight:600}
 .skill-head h3{font-family:var(--f-display);font-size:22px;line-height:1.2;letter-spacing:-.01em;font-weight:600}
 .hero h1{font-family:var(--f-hero);font-size:clamp(2.125rem,5vw,3.5rem);font-weight:600;line-height:1.12;letter-spacing:-.02em}
-.role{font-family:var(--f-body);font-size:20px;font-weight:600}
-.intro{font-size:18px}
 .counter strong{font-family:var(--f-display);font-weight:600}
 .btn{font-size:16px}
 .menu a{font-size:15px}
@@ -259,8 +253,6 @@ h3,.proj h3,.cert h3,.tl-item h3{font-family:var(--f-display);font-size:22px;lin
   body{font-size:15px}
   .sec-head h2,.creative-simple h2,.contact-intro h2{font-size:32px}
   h3,.proj h3,.cert h3,.tl-item h3,.skill-head h3{font-size:22px}
-  .role{font-size:20px}
-  .intro{font-size:18px}
   .btn{font-size:16px}
   .menu a{font-size:15px}
   .tag,.chip,.eyebrow,.cert .date,.proj-foot .period{font-size:14px}
@@ -281,7 +273,6 @@ h3,.proj h3,.cert h3,.tl-item h3{font-family:var(--f-display);font-size:22px;lin
 }
 h1,h2,h3{color:var(--head)}
 .hero{background:radial-gradient(60% 50% at 88% 12%,rgba(0,90,156,.10),transparent 70%),radial-gradient(50% 45% at 8% 92%,rgba(232,240,247,.9),transparent 70%),var(--bg)}
-.role .caret{height:1em}
 
 /* ---------- animated portrait ---------- */
 @keyframes floaty{50%{translate:0 -10px}}
@@ -313,8 +304,6 @@ h1,h2,h3{color:var(--head)}
   .hero{padding-top:calc(var(--nav-h) + 24px);padding-bottom:56px}
   .hero .wrap{gap:30px}
   .hero h1{font-size:clamp(1.625rem,8.4vw,2.125rem)}
-  .role{font-size:16px;min-height:3.1em}
-  .intro{font-size:15.5px;margin-top:16px}
   .cta{gap:12px;margin-top:24px}
   .cta .btn{flex:1 1 calc(50% - 6px);font-size:15px;padding:11px 18px}
 
@@ -482,8 +471,7 @@ main{counter-reset:sec}
 
 /* head: number on the left, date pill on the right, category below */
 .proj-top{display:grid;grid-template-columns:1fr auto;align-items:center;gap:12px 8px;margin-bottom:18px}
-.proj-top::before{content:attr(data-n);grid-column:1;grid-row:1;font:700 1.9rem/1 var(--f-display);letter-spacing:-.02em;color:var(--sky);opacity:.65}
-.proj-top .period{grid-column:2;grid-row:1;align-self:center;margin:0;padding:5px 12px;border-radius:999px;background:var(--surface-2);border:1px solid var(--border);font-size:12px;font-weight:700;line-height:1.2;color:var(--primary);white-space:nowrap}
+.proj-top .period{grid-column:1;grid-row:1;justify-self:start;align-self:center;margin:0;padding:5px 12px;border-radius:999px;background:var(--surface-2);border:1px solid var(--border);font-size:12px;font-weight:700;line-height:1.2;color:var(--primary);white-space:nowrap}
 .proj-top .tag{grid-column:1/-1;grid-row:2;justify-self:start;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding:5px 12px;font-size:.74rem;letter-spacing:0;background:var(--tag-bg);color:var(--primary);border:1px solid var(--border)}
 
 .proj h3{font-size:1.22rem;line-height:1.25;margin-bottom:10px}
@@ -513,7 +501,6 @@ main{counter-reset:sec}
 }
 @media (max-width:639px){
   .proj{--pad:18px}
-  .proj-top::before{font-size:1.6rem}
 }
 
 
@@ -539,7 +526,6 @@ main{counter-reset:sec}
   .projects{gap:16px 14px}
   .proj{--pad:16px;border-radius:18px}
   .proj-top{margin-bottom:12px;gap:8px 6px}
-  .proj-top::before{font-size:1.35rem}
   .proj-top .period{font-size:11px;padding:4px 10px}
   .proj-top .tag{font-size:.7rem;padding:4px 10px}
   .proj h3{font-size:1.05rem;margin-bottom:8px}
@@ -601,16 +587,17 @@ main{counter-reset:sec}
 .about-copy h2::after{content:"";display:block;width:44px;height:3px;margin:14px 0 16px;border-radius:999px;background:var(--grad)}
 .about-lead{font:600 clamp(1.1rem,2vw,1.3rem)/1.5 var(--f-display);color:var(--head,#002B49)}
 .about-text{margin-top:14px;max-width:52ch;font-size:14.5px;line-height:1.7;color:var(--muted)}
-.counters{display:flex;gap:var(--s2)}
-.about .counter{min-width:176px;padding:20px 24px}
+.counters{display:grid;grid-template-columns:repeat(2,minmax(150px,1fr));gap:var(--s2)}
+.about .counter{min-width:0;padding:20px 22px}
+.counter.is-pending{visibility:hidden}
 .about .counter strong{font-size:2.6rem}
 @media (max-width:899px){.about-grid{grid-template-columns:1fr;gap:28px}}
-@media (max-width:700px){.about{padding-block:44px}.counters{gap:12px}.about .counter{flex:1;min-width:0;padding:14px 16px}.about .counter strong{font-size:2rem}}
+@media (max-width:700px){.about{padding-block:44px}.counters{gap:12px}.about .counter{padding:14px 16px}.about .counter strong{font-size:2rem}}
 
 /* ==========================================================
    Projects / certificates on phones in desktop layout: 3 columns
    ========================================================== */
-@media (pointer:coarse) and (min-width:900px){.projects,.certs{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (pointer:coarse) and (min-width:900px){.projects{grid-template-columns:repeat(3,minmax(0,1fr))}.certs{grid-template-columns:repeat(2,minmax(0,1fr))}}
 
 /* hero buttons: smaller, all blue */
 .cta .btn{min-height:40px;padding:8px 18px;font-size:15px}
@@ -636,3 +623,48 @@ main{counter-reset:sec}
 .cert-body .by{margin:6px 0 14px;color:var(--muted);font-size:14.5px;line-height:1.5}
 .cert-body .date{display:inline-flex;align-items:center;gap:7px;margin-top:auto;padding-top:12px;border-top:1px solid var(--border);color:var(--primary);font-size:13px;font-weight:700}
 .cert-body .date svg{width:15px;height:15px}
+
+
+
+/* ==========================================================
+   Software I use (navy band, icon tiles)
+   ========================================================== */
+.software{background:#002B49;color:#fff;border:0}
+.software .sec-head::before{color:#9CC3E6}
+.software .sec-head h2{color:#fff}
+.software .sec-head h2::after{background:#9CC3E6}
+.software .sec-head p{color:#B8C7D6}
+.soft-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:var(--s6) 0 0;padding:0;list-style:none}
+@media (min-width:900px){.soft-grid{grid-template-columns:repeat(7,minmax(0,1fr));gap:12px}.soft{padding:20px 8px 16px}.soft strong{font-size:.9rem}}
+.soft{display:flex;flex-direction:column;align-items:center;gap:4px;padding:22px 12px 18px;text-align:center;border:1px solid #33556D;border-radius:16px;background:rgba(255,255,255,.04);transition:transform .25s,border-color .25s,background-color .25s}
+.soft:hover{transform:translateY(-4px);border-color:#9CC3E6;background:rgba(156,195,230,.10)}
+.soft-ico{display:grid;place-items:center;width:60px;height:60px;margin-bottom:10px;border-radius:16px;background:#fff;box-shadow:0 10px 22px -12px rgba(0,0,0,.7);transition:transform .25s}
+.soft:hover .soft-ico{transform:scale(1.08) rotate(-3deg)}
+.soft-ico img{width:34px;height:34px;object-fit:contain}
+.soft strong{font-size:.95rem;font-weight:700;color:#fff;line-height:1.25}
+.soft small{font-size:.76rem;line-height:1.35;color:#9FB2C4}
+@media (max-width:700px){.soft-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.soft{padding:16px 8px 14px}.soft-ico{width:52px;height:52px}}
+@media (max-width:380px){.soft-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.soft-ico img[src$="oracle.svg"]{width:46px;height:auto}
+
+/* nine nav links: keep brand on one line on ~1000px wide layouts */
+.brand{white-space:nowrap}
+@media (min-width:900px) and (max-width:1120px){.menu a{padding-inline:9px;font-size:14.5px}.menu{gap:0}}
+
+
+/* ==========================================================
+   Hero text: eyebrow line, bigger name, role pills
+   ========================================================== */
+.eyebrow{display:inline-flex;align-items:center;gap:12px;padding:0;border:0;background:none;font-size:.8rem;font-weight:800;letter-spacing:.2em;color:var(--primary)}
+.eyebrow::before{content:"";width:38px;height:2px;border-radius:2px;background:var(--grad)}
+.hero h1{margin-top:8px;font-size:clamp(2.4rem,5.8vw,4.3rem);line-height:1.06;letter-spacing:-.03em}
+.roles{display:flex;flex-wrap:wrap;gap:10px;margin:24px 0 0;padding:0;list-style:none}
+.roles li{display:inline-flex;align-items:center;gap:8px;padding:8px 16px 8px 12px;border:1px solid var(--border);border-radius:999px;background:rgba(255,255,255,.88);color:#002B49;font-size:14.5px;font-weight:700;line-height:1.2;box-shadow:0 8px 18px -12px rgba(0,43,73,.5);opacity:0;translate:0 10px;animation:roleIn .6s cubic-bezier(.2,.7,.2,1) forwards}
+.roles li:nth-child(1){animation-delay:1.9s}
+.roles li:nth-child(2){animation-delay:2.1s}
+.roles li:nth-child(3){animation-delay:2.3s}
+.roles svg{width:17px;height:17px;color:var(--primary)}
+@keyframes roleIn{to{opacity:1;translate:0 0}}
+@media (prefers-reduced-motion:reduce){.roles li{opacity:1;translate:none;animation:none}}
+@media (max-width:1040px){.roles{gap:7px}.roles li{padding:6px 12px 6px 9px;font-size:13px}.roles svg{width:15px;height:15px}}
+@media (max-width:639px){.roles{gap:8px;margin-top:18px}.roles li{padding:7px 13px 7px 10px;font-size:13.5px}.hero h1{font-size:clamp(1.9rem,9vw,2.4rem)}}

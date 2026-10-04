@@ -36,6 +36,7 @@ document.documentElement.classList.add('forced-desktop');}}catch(e){}})();
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <svg aria-hidden="true" style="display:none" xmlns="http://www.w3.org/2000/svg">
+<symbol id="i-cap" viewbox="0 0 24 24"><path d="M22 10 12 5 2 10l10 5z"></path><path d="M6 12v5c3 2.4 9 2.4 12 0v-5"></path><path d="M22 10v6"></path></symbol>
 <symbol id="i-code" viewbox="0 0 24 24"><path d="m16 18 6-6-6-6M8 6l-6 6 6 6"></path></symbol>
 <symbol id="i-globe" viewbox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"></path></symbol>
 <symbol id="i-monitor" viewbox="0 0 24 24"><rect height="14" rx="2" width="20" x="2" y="3"></rect><path d="M8 21h8M12 17v4"></path></symbol>
@@ -60,7 +61,7 @@ document.documentElement.classList.add('forced-desktop');}}catch(e){}})();
 <div class="wrap">
 <a aria-label="Najiat Islam Rishad, home" class="brand" href="#home"><svg aria-hidden="true" viewbox="0 0 64 64"><rect fill="#002B49" height="64" rx="14" width="64"></rect><text fill="#E8F0F7" font-family="Georgia,serif" font-size="30" font-weight="700" text-anchor="middle" x="32" y="43">NR</text></svg><span>Najiat Islam Rishad</span></a>
 <nav aria-label="Primary" class="menu" id="menu">
-<a href="#home">Home</a><a href="#about">About</a><a href="#education">Education</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#certificates">Certificates</a><a href="#creative">Creative</a><a href="#contact">Contact</a>
+<a href="#home">Home</a><a href="#about">About</a><a href="#education">Education</a><a href="#skills">Skills</a><a href="#software">Software</a><a href="#projects">Projects</a><a href="#certificates">Certificates</a><a href="#creative">Creative</a><a href="#contact">Contact</a>
 </nav>
 <div class="nav-tools">
 <button aria-controls="menu" aria-expanded="false" aria-label="Open menu" class="icon-btn burger" id="burger" type="button"><svg aria-hidden="true" class="i"><use href="#i-menu"></use></svg></button>
@@ -74,8 +75,11 @@ document.documentElement.classList.add('forced-desktop');}}catch(e){}})();
 <div class="hero-copy">
 <p class="eyebrow">Computer Science &amp; Engineering</p>
 <h1 aria-label="Najiat Islam Rishad" id="hero-title"><span data-text="Najiat Islam Rishad" id="typed-name"></span><span aria-hidden="true" class="name-caret"></span></h1>
-<p aria-label="CSE Student, Software Developer, Graphic Designer" class="role"><span aria-hidden="true" data-text="CSE Student • Software Developer • Graphic Designer" id="typed-role">CSE Student • Software Developer • Graphic Designer</span><span aria-hidden="true" class="caret"></span></p>
-<p class="intro">I build practical software, database and embedded-system projects, with a growing focus on data science and clean user experiences.</p>
+<ul aria-label="Roles" class="roles">
+<li><svg aria-hidden="true" class="i"><use href="#i-cap"></use></svg>CSE Student</li>
+<li><svg aria-hidden="true" class="i"><use href="#i-code"></use></svg>Software Developer</li>
+<li><svg aria-hidden="true" class="i"><use href="#i-pen"></use></svg>Graphic Designer</li>
+</ul>
 <div class="cta">
 <a class="btn btn-primary" href="#projects">View projects</a>
 <a class="btn btn-primary" href="https://drive.google.com/file/d/1GTGmHch81PV_su9RAbKCc9UFYv_nI5yy/view?usp=drive_link" rel="noopener noreferrer" target="_blank">View resume <svg aria-hidden="true" class="i"><use href="#i-ext"></use></svg></a>
@@ -107,6 +111,8 @@ document.documentElement.classList.add('forced-desktop');}}catch(e){}})();
 <div class="counters">
 <div class="counter"><strong data-count="10">10</strong><span>Projects on GitHub</span></div>
 <div class="counter"><strong data-count="8">8</strong><span>Certificates</span></div>
+<div class="counter is-pending" id="gh-card" title="People who opened my GitHub from this portfolio"><strong>0</strong><span>GitHub visits</span></div>
+<div class="counter is-pending" id="views-card" title="Different browsers that opened this portfolio"><strong id="views">0</strong><span>Portfolio visitors</span></div>
 </div>
 </div>
 </section>
@@ -144,38 +150,59 @@ document.documentElement.classList.add('forced-desktop');}}catch(e){}})();
 <ul class="chips"><li class="chip"><img src="assets/icons/skills/photoshop.svg" alt="" width="16" height="16" loading="lazy" decoding="async">Adobe Photoshop</li><li class="chip"><img src="assets/icons/skills/illustrator.svg" alt="" width="16" height="16" loading="lazy" decoding="async">Adobe Illustrator</li></ul></li></ul>
 </div>
 </section>
+<section aria-labelledby="software-h" class="sec software" id="software">
+<div class="wrap">
+<div class="sec-head"><h2 id="software-h">Software I use</h2><p>Tools I am comfortable working with, from coding and databases to circuits, statistics and CAD.</p></div>
+<ul class="soft-grid" data-stagger="">
+<li class="soft"><span class="soft-ico"><img alt="" decoding="async" height="34" loading="lazy" src="assets/icons/software/vscode.svg" width="34"/></span><strong>VS Code</strong><small>Code editor</small></li>
+<li class="soft"><span class="soft-ico"><img alt="" decoding="async" height="34" loading="lazy" src="assets/icons/software/visualstudio.svg" width="34"/></span><strong>Visual Studio</strong><small>IDE</small></li>
+<li class="soft"><span class="soft-ico"><img alt="" decoding="async" height="34" loading="lazy" src="assets/icons/software/codeblocks.svg" width="34"/></span><strong>Code::Blocks</strong><small>C / C++ IDE</small></li>
+<li class="soft"><span class="soft-ico"><img alt="" decoding="async" height="34" loading="lazy" src="assets/icons/software/notepadplusplus.svg" width="34"/></span><strong>Notepad++</strong><small>Text editor</small></li>
+<li class="soft"><span class="soft-ico"><img alt="" decoding="async" height="34" loading="lazy" src="assets/icons/software/anaconda.svg" width="34"/></span><strong>Anaconda</strong><small>Python &amp; data science</small></li>
+<li class="soft"><span class="soft-ico"><img alt="" decoding="async" height="34" loading="lazy" src="assets/icons/software/rstudio.svg" width="34"/></span><strong>RStudio</strong><small>R / data analysis</small></li>
+<li class="soft"><span class="soft-ico"><img alt="" decoding="async" height="34" loading="lazy" src="assets/icons/software/matlab.svg" width="34"/></span><strong>MATLAB</strong><small>Numerical computing</small></li>
+<li class="soft"><span class="soft-ico"><img alt="" decoding="async" height="34" loading="lazy" src="assets/icons/software/spss.svg" width="34"/></span><strong>SPSS</strong><small>Statistical analysis</small></li>
+<li class="soft"><span class="soft-ico"><img alt="" decoding="async" height="34" loading="lazy" src="assets/icons/software/oracle.svg" width="34"/></span><strong>Oracle Database</strong><small>SQL &amp; databases</small></li>
+<li class="soft"><span class="soft-ico"><img alt="" decoding="async" height="34" loading="lazy" src="assets/icons/software/arduino.svg" width="34"/></span><strong>Arduino IDE</strong><small>Embedded systems</small></li>
+<li class="soft"><span class="soft-ico"><img alt="" decoding="async" height="34" loading="lazy" src="assets/icons/software/proteus.svg" width="34"/></span><strong>Proteus</strong><small>Microcontroller simulation</small></li>
+<li class="soft"><span class="soft-ico"><img alt="" decoding="async" height="34" loading="lazy" src="assets/icons/software/multisim.svg" width="34"/></span><strong>Multisim</strong><small>Circuit simulation</small></li>
+<li class="soft"><span class="soft-ico"><img alt="" decoding="async" height="34" loading="lazy" src="assets/icons/software/autocad.svg" width="34"/></span><strong>AutoCAD 2007</strong><small>CAD drafting</small></li>
+<li class="soft"><span class="soft-ico"><img alt="" decoding="async" height="34" loading="lazy" src="assets/icons/software/canva.svg" width="34"/></span><strong>Canva</strong><small>Graphic design</small></li>
+</ul>
+</div>
+</section>
 <section aria-labelledby="proj-h" class="sec" id="projects">
 <div class="wrap">
 <div class="sec-head"><h2 id="proj-h">Featured projects</h2><p>Ten repositories, from data science and full-stack apps to embedded hardware.</p></div>
 <div aria-label="Filter projects by category" class="filters" data-target=".proj" role="group"><button aria-pressed="true" data-filter="all" type="button">All</button><button aria-pressed="false" data-filter="ds" type="button">Data Science</button><button aria-pressed="false" data-filter="web" type="button">Web</button><button aria-pressed="false" data-filter="desktop" type="button">Desktop</button><button aria-pressed="false" data-filter="database" type="button">Database</button><button aria-pressed="false" data-filter="embedded" type="button">Embedded</button><button aria-pressed="false" data-filter="graphics" type="button">Graphics</button><button aria-pressed="false" data-filter="se" type="button">Software Engineering</button></div><p class="sr" role="status"></p>
-<div class="grid projects" data-stagger=""><article class="card proj" data-cat="ds"><div class="proj-top" data-n="01"><span class="tag">Data Science / EDA</span><span class="period">2025 - 2026, Summer</span></div>
+<div class="grid projects" data-stagger=""><article class="card proj" data-cat="ds"><div class="proj-top"><span class="tag">Data Science / EDA</span><span class="period">2025 - 2026, Summer</span></div>
 <h3>Stroke Data Cleaning, Preprocessing &amp; EDA</h3><p class="desc">Cleaning, preprocessing and exploratory analysis of the Stroke Prediction Dataset.</p><div class="tech"><span>R</span></div>
 <ul class="feat"><li>Missing-value and duplicate analysis</li><li>Inconsistent-data handling</li><li>Outlier analysis</li><li>Exploratory data analysis</li></ul><div class="proj-foot"><a aria-label="View Stroke Data Cleaning, Preprocessing &amp; EDA on GitHub" class="btn btn-sm" href="https://github.com/munshi-rishad/DataScience-Stroke-Data-Cleaning-Preprocessing-EDA" rel="noopener noreferrer" target="_blank">View on GitHub <svg aria-hidden="true" class="i"><use href="#i-github"></use></svg></a></div></article>
-<article class="card proj" data-cat="ds"><div class="proj-top" data-n="02"><span class="tag">Data Science / NLP / ML</span><span class="period">2025 - 2026, Summer</span></div>
+<article class="card proj" data-cat="ds"><div class="proj-top"><span class="tag">Data Science / NLP / ML</span><span class="period">2025 - 2026, Summer</span></div>
 <h3>Twitter Sentiment Noise Robustness</h3><p class="desc">A reproducible benchmark of how sentiment classifiers hold up under synthetic textual corruption.</p><div class="tech"><span>Bag of Words</span><span>TF-IDF</span><span>Naive Bayes</span><span>Linear SVM</span><span>Logistic Regression</span></div>
 <ul class="feat"><li>Text preprocessing</li><li>Bag of Words and TF-IDF features</li><li>Three classifiers compared</li><li>Noise robustness analysis</li></ul><div class="proj-foot"><a aria-label="View Twitter Sentiment Noise Robustness on GitHub" class="btn btn-sm" href="https://github.com/munshi-rishad/DataScience-Twitter-Sentiment-Noise-Robustness" rel="noopener noreferrer" target="_blank">View on GitHub <svg aria-hidden="true" class="i"><use href="#i-github"></use></svg></a></div></article>
-<article class="card proj" data-cat="web database"><div class="proj-top" data-n="03"><span class="tag">Full-Stack Web Application</span><span class="period">2025 - 2026, Summer</span></div>
+<article class="card proj" data-cat="web database"><div class="proj-top"><span class="tag">Full-Stack Web Application</span><span class="period">2025 - 2026, Summer</span></div>
 <h3>EduQuiz: Online Quiz Management System</h3><p class="desc">A quiz platform with separate Admin, Instructor and Student portals, backed by a database.</p><div class="tech"><span>PHP</span><span>MySQL</span><span>Apache</span><span>JavaScript</span><span>Bootstrap</span></div>
 <ul class="feat"><li>Session-based authentication</li><li>Automated scoring</li><li>Instant grade computation</li><li>Performance metrics</li></ul><div class="proj-foot"><a aria-label="View EduQuiz: Online Quiz Management System on GitHub" class="btn btn-sm" href="https://github.com/munshi-rishad/WebTech-EduQuiz-Online-Quiz-Management-System" rel="noopener noreferrer" target="_blank">View on GitHub <svg aria-hidden="true" class="i"><use href="#i-github"></use></svg></a></div></article>
-<article class="card proj" data-cat="desktop database"><div class="proj-top" data-n="04"><span class="tag">Enterprise Desktop Software</span><span class="period">2025 - 2026, Fall</span></div>
+<article class="card proj" data-cat="desktop database"><div class="proj-top"><span class="tag">Enterprise Desktop Software</span><span class="period">2025 - 2026, Fall</span></div>
 <h3>Farm Invoice Manager: Billing &amp; Inventory</h3><p class="desc">Desktop software for agricultural inventory, invoicing and sales reporting.</p><div class="tech"><span>C#</span><span>.NET Windows Forms</span><span>Microsoft SQL Server</span></div>
 <ul class="feat"><li>Invoice management and printing</li><li>Role-based authentication</li><li>Parameterized SQL queries and CRUD</li><li>Sales reports with graphs</li></ul><div class="proj-foot"><a aria-label="View Farm Invoice Manager: Billing &amp; Inventory on GitHub" class="btn btn-sm" href="https://github.com/munshi-rishad/CSharp-FarmInvoiceManager" rel="noopener noreferrer" target="_blank">View on GitHub <svg aria-hidden="true" class="i"><use href="#i-github"></use></svg></a></div></article>
-<article class="card proj" data-cat="desktop database"><div class="proj-top" data-n="05"><span class="tag">Object-Oriented Desktop App</span><span class="period">2023 - 2024, Summer</span></div>
+<article class="card proj" data-cat="desktop database"><div class="proj-top"><span class="tag">Object-Oriented Desktop App</span><span class="period">2023 - 2024, Summer</span></div>
 <h3>Coffee Shop Billing Management System</h3><p class="desc">A point-of-sale style billing application for a coffee shop.</p><div class="tech"><span>Java</span><span>Java Swing</span><span>MySQL</span></div>
 <ul class="feat"><li>Order checkout and menu catalog</li><li>Price and tax calculation</li><li>Payment workflow</li><li>Inventory and stock monitoring</li></ul><div class="proj-foot"><a aria-label="View Coffee Shop Billing Management System on GitHub" class="btn btn-sm" href="https://github.com/munshi-rishad/Java-CoffeeShopBillingManagementSystem" rel="noopener noreferrer" target="_blank">View on GitHub <svg aria-hidden="true" class="i"><use href="#i-github"></use></svg></a></div></article>
-<article class="card proj" data-cat="database"><div class="proj-top" data-n="06"><span class="tag">Database &amp; Reservation System</span><span class="period">2024 - 2025, Fall</span></div>
+<article class="card proj" data-cat="database"><div class="proj-top"><span class="tag">Database &amp; Reservation System</span><span class="period">2024 - 2025, Fall</span></div>
 <h3>Bus Ticket Counter Management System</h3><p class="desc">A reservation system built around a relational Oracle schema.</p><div class="tech"><span>Java</span><span>Oracle Database 11g</span><span>SQL</span></div>
 <ul class="feat"><li>Passenger booking and route scheduling</li><li>Seat management</li><li>Reservation workflow</li><li>Constraints and data integrity</li></ul><div class="proj-foot"><a aria-label="View Bus Ticket Counter Management System on GitHub" class="btn btn-sm" href="https://github.com/munshi-rishad/DataBase-BusTicketCounterManagement" rel="noopener noreferrer" target="_blank">View on GitHub <svg aria-hidden="true" class="i"><use href="#i-github"></use></svg></a></div></article>
-<article class="card proj" data-cat="desktop"><div class="proj-top" data-n="07"><span class="tag">Desktop Application</span><span class="period">2025 - 2026, Fall</span></div>
+<article class="card proj" data-cat="desktop"><div class="proj-top"><span class="tag">Desktop Application</span><span class="period">2025 - 2026, Fall</span></div>
 <h3>Desktop Based Calculator</h3><p class="desc">A Windows Forms calculator for basic arithmetic with a running calculation display.</p><div class="tech"><span>C#</span><span>Windows Forms</span></div>
 <ul class="feat"><li>Add, subtract, multiply, divide</li><li>Running calculation display</li><li>Desktop GUI</li></ul><div class="proj-foot"><a aria-label="View Desktop Based Calculator on GitHub" class="btn btn-sm" href="https://github.com/munshi-rishad/CSharpLab-Desktop-Based-Calculator" rel="noopener noreferrer" target="_blank">View on GitHub <svg aria-hidden="true" class="i"><use href="#i-github"></use></svg></a></div></article>
-<article class="card proj" data-cat="graphics"><div class="proj-top" data-n="08"><span class="tag">Interactive Computer Graphics</span><span class="period">2025 - 2026, Summer</span></div>
+<article class="card proj" data-cat="graphics"><div class="proj-top"><span class="tag">Interactive Computer Graphics</span><span class="period">2025 - 2026, Summer</span></div>
 <h3>Dreamland Village: 2D Graphics Simulation</h3><p class="desc">An interactive 2D rural scene drawn with geometric primitives and controlled from the keyboard.</p><div class="tech"><span>C++</span><span>OpenGL</span><span>GLUT API</span></div>
 <ul class="feat"><li>Day, Sunset, Night and Rain modes</li><li>Geometric-primitive rendering</li><li>Transformations</li><li>Keyboard-driven environment changes</li></ul><div class="proj-foot"><a aria-label="View Dreamland Village: 2D Graphics Simulation on GitHub" class="btn btn-sm" href="https://github.com/munshi-rishad/ComputerGraphics-Dreamland-Village-Ultimate" rel="noopener noreferrer" target="_blank">View on GitHub <svg aria-hidden="true" class="i"><use href="#i-github"></use></svg></a></div></article>
-<article class="card proj" data-cat="se"><div class="proj-top" data-n="09"><span class="tag">Software Engineering / System Design</span><span class="period">2025 - 2026, Spring</span></div>
+<article class="card proj" data-cat="se"><div class="proj-top"><span class="tag">Software Engineering / System Design</span><span class="period">2025 - 2026, Spring</span></div>
 <h3>Traditional Model Driven Banking System</h3><p class="desc">A banking system planned with the traditional SDLC approach, from requirements to design.</p><div class="tech"><span>SDLC</span><span>UML</span></div>
 <ul class="feat"><li>Requirement analysis and system design</li><li>UML diagrams</li><li>Account, customer and transaction management</li><li>Deposit, withdrawal, transfer and reporting</li></ul><div class="proj-foot"><a aria-label="View Traditional Model Driven Banking System on GitHub" class="btn btn-sm" href="https://github.com/munshi-rishad/Software-Traditional-Model-Driven-Banking-System" rel="noopener noreferrer" target="_blank">View on GitHub <svg aria-hidden="true" class="i"><use href="#i-github"></use></svg></a></div></article>
-<article class="card proj" data-cat="embedded"><div class="proj-top" data-n="10"><span class="tag">Embedded Hazard Safety System</span><span class="period">2025 - 2026, Spring</span></div>
+<article class="card proj" data-cat="embedded"><div class="proj-top"><span class="tag">Embedded Hazard Safety System</span><span class="period">2025 - 2026, Spring</span></div>
 <h3>Arduino Gas Leakage &amp; Fire Detection with Prevention</h3><p class="desc">Sensors detect gas and flame hazards, then embedded control logic responds with alerts and prevention actions.</p><div class="tech"><span>Arduino Uno</span><span>C++</span><span>MQ-2 Gas Sensor</span><span>Flame Sensor</span></div>
 <ul class="feat"><li>Gas leakage and flame detection</li><li>Threshold-based monitoring</li><li>Buzzer safety alerts</li><li>Hazard-prevention response</li></ul><div class="proj-foot"><a aria-label="View Arduino Gas Leakage &amp; Fire Detection with Prevention on GitHub" class="btn btn-sm" href="https://github.com/munshi-rishad/Microprocessor-Arduino-Based-Gas-Leakage-and-Fire-Detection-With-Prevention-and-Safety-Mechanisms" rel="noopener noreferrer" target="_blank">View on GitHub <svg aria-hidden="true" class="i"><use href="#i-github"></use></svg></a></div></article></div>
 </div>
@@ -211,18 +238,13 @@ document.documentElement.classList.add('forced-desktop');}}catch(e){}})();
 <div class="contact-intro">
 <h2 id="ct-h">Let’s talk</h2>
 <span aria-hidden="true" class="contact-line"></span>
-<p>For project discussions, professional opportunities or collaboration, reach out by email or connect through GitHub.</p>
+<p>For project discussions, professional opportunities or collaboration, reach out by email.</p>
 </div>
 <div class="contact-list">
 <div class="contact-box">
 <span class="contact-icon"><svg aria-hidden="true" class="i"><use href="#i-mail"></use></svg></span>
 <div><small>Email</small><strong>reshad.munshi2004@gmail.com</strong></div>
 <div class="contact-box-actions"><a class="mini-action" href="mailto:reshad.munshi2004@gmail.com">Email</a><button class="mini-action" data-copy="reshad.munshi2004@gmail.com" type="button">Copy</button></div>
-</div>
-<div class="contact-box">
-<span class="contact-icon"><svg aria-hidden="true" class="i"><use href="#i-github"></use></svg></span>
-<div><small>GitHub</small><strong>github.com/munshi-rishad</strong></div>
-<a class="mini-action" href="https://github.com/munshi-rishad" rel="noopener noreferrer" target="_blank">Open</a>
 </div>
 </div>
 </div>

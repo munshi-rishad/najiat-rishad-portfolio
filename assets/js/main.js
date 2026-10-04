@@ -67,26 +67,6 @@
     }
   }
 
-  /* ---------- typewriter role (type, hold, erase, loop) ---------- */
-  const roleEl = $('#typed-role');
-  if (roleEl && !reduce) {
-    const full = roleEl.dataset.text;
-    let n = 0, dir = 1;
-    roleEl.textContent = '';
-    const heroEl = $('.hero');
-    const tick = () => {
-      if (document.hidden || (heroEl && heroEl.classList.contains('is-off'))) { setTimeout(tick, 600); return; }
-      n += dir;
-      roleEl.textContent = full.slice(0, n);
-      let d = dir > 0 ? 70 : 32;
-      if (dir > 0 && n === full.length) { dir = -1; d = 1900; }
-      else if (dir < 0 && n === 0) { dir = 1; d = 450; }
-      setTimeout(tick, d);
-    };
-    setTimeout(tick, 2400);
-  }
-
-
   /* ---------- profile photo: shuffled campus slideshow ---------- */
   (() => {
     const box = $('.pslides');
@@ -183,6 +163,49 @@
     if (en.isIntersecting) { run(en.target); cio.unobserve(en.target); }
   }), { threshold: 0.6 });
   counters.forEach(el => { if (!reduce) el.textContent = (0).toFixed(+el.dataset.dec || 0); cio.observe(el); });
+
+  /* ---------- visitor counters (Abacus, free counter API) ----------
+     Portfolio visitors: +1 per browser on first visit.
+     GitHub visits: +1 per browser the first time a GitHub link from this page is clicked. */
+  (() => {
+    const views = $('#views-card'), gh = $('#gh-card');
+    if (!views || !gh) return;
+    const base = 'https://abacus.jasoncameron.dev', ns = 'munshi-rishad.github.io';
+    const VIEWS = 'portfolio-views', GITHUB = 'github-visits';
+    const local = /^(localhost|127\.|0\.0\.0\.0|\[::1\])/.test(location.hostname) || location.protocol === 'file:';
+    const flag = {
+      has: k => { try { return localStorage.getItem(k) === '1'; } catch (e) { return false; } },
+      set: k => { try { localStorage.setItem(k, '1'); } catch (e) {} }
+    };
+    const call = (kind, key) => fetch(`${base}/${kind}/${ns}/${key}`).then(r => {
+      if (r.status === 404) return null;
+      if (!r.ok) throw 0;
+      return r.json().then(d => { if (typeof d.value !== 'number') throw 0; return d.value; });
+    });
+    const show = (card, v) => {
+      const n = card.querySelector('strong');
+      n.dataset.count = v;
+      card.classList.remove('is-pending');
+      run(n);
+    };
+    const off = card => { card.hidden = true; };
+    if (local) { off(views); off(gh); return; }
+
+    (flag.has('viewed') ? call('get', VIEWS).then(v => v === null ? call('hit', VIEWS) : v) : call('hit', VIEWS))
+      .then(v => { if (v === null) throw 0; flag.set('viewed'); show(views, v); })
+      .catch(() => off(views));
+
+    call('get', GITHUB).then(v => show(gh, v === null ? 0 : v)).catch(() => off(gh));
+
+    let busy = false;
+    document.addEventListener('click', e => {
+      const a = e.target.closest('a[href^="https://github.com/munshi-rishad"]');
+      if (!a || busy || flag.has('ghclick')) return;
+      busy = true;
+      call('hit', GITHUB).then(v => { if (v !== null) { flag.set('ghclick'); show(gh, v); } })
+        .catch(() => {}).then(() => { busy = false; });
+    });
+  })();
 
   /* ---------- cursor glow + magnetic primary buttons (desktop only) ---------- */
   if (fine) {
