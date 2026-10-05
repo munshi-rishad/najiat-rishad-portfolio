@@ -72,7 +72,7 @@
     const box = $('.pslides');
     if (!box) return;
     const imgs = $$('.slide', box);
-    const names = box.dataset.slides.split(',').map(n => `assets/images/campus/${n.trim()}.webp`);
+    const names = box.dataset.slides.split(',').map(n => `assets/images/profile/${n.trim()}.webp`);
     if (imgs.length < 2 || names.length < 2) return;
     const shuffle = a => { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
     let queue = [], shown = imgs[0].getAttribute('src'), cur = 0, timer;
@@ -192,12 +192,13 @@
 
   /* ---------- cursor glow + magnetic primary buttons (desktop only) ---------- */
   if (fine) {
+    const zoom = () => parseFloat(getComputedStyle(document.body).zoom) || 1; // page runs at 90% on desktop
     document.addEventListener('pointermove', e => {
       const card = e.target.closest && e.target.closest('.card');
       if (!card) return;
-      const r = card.getBoundingClientRect();
-      card.style.setProperty('--mx', `${e.clientX - r.left}px`);
-      card.style.setProperty('--my', `${e.clientY - r.top}px`);
+      const r = card.getBoundingClientRect(), z = zoom();
+      card.style.setProperty('--mx', `${(e.clientX - r.left) / z}px`);
+      card.style.setProperty('--my', `${(e.clientY - r.top) / z}px`);
     }, { passive: true });
     if (!reduce) {
       $$('.btn-primary').forEach(b => {

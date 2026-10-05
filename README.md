@@ -5,17 +5,22 @@ Live: https://munshi-rishad.github.io/najiat-rishad-portfolio/
 
 ## Structure
 ```
-index.html, 404.html, robots.txt, sitemap.xml
-assets/  css/  js/  fonts/  images/  icons/  docs/certificates/
+index.html  404.html  robots.txt  sitemap.xml
+assets/
+  css/style.css        js/main.js        fonts/        icons/
+  images/
+    profile/           hero slideshow photos (profile-1..3.webp)
+    certificates/      certificate previews (open Drive link on click)
+    graphic-design/    design thumbnails, 2022 (open Drive link on click)
+    logos/             institute logos
+    og-image.jpg       social share preview (1200x630)
 ```
 
-## Phone layout
-Touch devices under 980px open the desktop layout automatically (script in `index.html` `<head>`, `DESKTOP_W`).
-Add `?view=mobile` to the URL for the mobile layout.
-
-## Portfolio visitors (About section)
-Abacus counter API, no signup. +1 per browser on its first visit. Hidden on localhost or if the service is down.
-To restart the count, change `key` in `assets/js/main.js`.
+## Editing
+- Certificate / design Drive links: `href` of each card in `index.html`.
+- Desktop default zoom is 90% (mouse + wide screens only): last block of `assets/css/style.css`. Delete it for 100%.
+- Phones/tablets open the desktop layout automatically (`DESKTOP_W` in the `<head>` script). Add `?view=mobile` for the mobile layout.
+- Visitor counter: Abacus API; change `key` in `assets/js/main.js` to restart the count.
 
 ## Run / deploy
 ```
