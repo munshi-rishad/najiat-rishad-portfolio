@@ -181,11 +181,6 @@ svg.i{width:20px;height:20px;flex:none;fill:none;stroke:currentColor;stroke-widt
 .cert{display:flex;flex-direction:column;gap:var(--s2)}
 .cert h3{font-family:var(--f-body);font-size:1.05rem;line-height:1.35;letter-spacing:0}
 
-/* ---------- creative ---------- */
-.creative-simple{display:flex;align-items:center;justify-content:space-between;gap:var(--s4);padding:clamp(24px,5vw,46px);background:linear-gradient(135deg,var(--surface),var(--surface-2))}
-.creative-simple h2{margin-top:10px;font-size:clamp(2rem,4vw,3rem)}
-.creative-simple p{margin-top:10px;max-width:62ch;color:var(--muted);line-height:1.7}
-.creative-simple .btn{flex:none}
 
 
 .toast{position:fixed;left:50%;bottom:var(--s4);z-index:60;translate:-50% 24px;padding:12px 20px;border-radius:999px;background:var(--text);color:var(--bg);font-weight:600;font-size:.9rem;opacity:0;pointer-events:none;transition:opacity .25s,translate .25s}
@@ -217,8 +212,6 @@ svg.i{width:20px;height:20px;flex:none;fill:none;stroke:currentColor;stroke-widt
   .tl-item::after{left:calc(var(--s4) * -1 + 4px)}
   .brand span{display:none}
   .cta .btn{flex:1 1 100%}
-  .creative-simple{align-items:flex-start;flex-direction:column}
-  .creative-simple .btn{width:100%}
   .to-top{right:var(--s2);bottom:var(--s2)}
 }
 @media (hover:none){.card:hover{translate:0 0;box-shadow:var(--shadow);border-color:var(--border)}.card:hover::before{opacity:0}.shot:hover{translate:0 0}}
@@ -238,7 +231,7 @@ svg.i{width:20px;height:20px;flex:none;fill:none;stroke:currentColor;stroke-widt
 }
 body{font-family:var(--f-body);font-size:17px;line-height:1.65}
 h2,h3{font-family:var(--f-display);font-weight:600}
-.sec-head h2,.creative-simple h2,.contact-intro h2{font-size:clamp(2rem,4vw,2.75rem)}
+.sec-head h2,.contact-intro h2{font-size:clamp(2rem,4vw,2.75rem)}
 h3,.proj h3,.cert h3,.tl-item h3{font-family:var(--f-display);font-size:22px;line-height:1.2;letter-spacing:-.01em;font-weight:600}
 .skill-head h3{font-family:var(--f-display);font-size:22px;line-height:1.2;letter-spacing:-.01em;font-weight:600}
 .hero h1{font-family:var(--f-hero);font-size:clamp(2.125rem,5vw,3.5rem);font-weight:600;line-height:1.12;letter-spacing:-.02em}
@@ -251,7 +244,7 @@ h3,.proj h3,.cert h3,.tl-item h3{font-family:var(--f-display);font-size:22px;lin
 
 @media (max-width:639px){
   body{font-size:15px}
-  .sec-head h2,.creative-simple h2,.contact-intro h2{font-size:32px}
+  .sec-head h2,.contact-intro h2{font-size:32px}
   h3,.proj h3,.cert h3,.tl-item h3,.skill-head h3{font-size:22px}
   .btn{font-size:16px}
   .menu a{font-size:15px}
@@ -292,7 +285,7 @@ h1,h2,h3{color:var(--head)}
   .wrap{padding-inline:24px}
   .sec{padding-block:52px}
   .sec-head{margin-bottom:24px}
-  .sec-head h2,.creative-simple h2,.contact-intro h2{font-size:28px}
+  .sec-head h2,.contact-intro h2{font-size:28px}
   h3,.proj h3,.cert h3,.tl-item h3{font-size:18px}
   .skill-head h3{font-size:17px}
 
@@ -398,8 +391,6 @@ main{counter-reset:sec}
 /* timeline pulse */
 .tl-item::after{animation:ring 2.4s ease-out infinite}
 
-/* creative + contact */
-.creative-simple{border-left:4px solid var(--primary)}
 
 @media (max-width:700px){
   .hero::before{width:320px;height:320px;right:-100px;top:-80px}
@@ -440,11 +431,6 @@ main{counter-reset:sec}
 .proj-top{align-items:flex-start;flex-wrap:wrap;gap:6px var(--s1)}
 .proj-top .tag{flex:0 1 auto}
 .proj-top .period{margin-left:auto;flex:none;text-align:right;white-space:nowrap;font-size:13px;font-weight:600;color:var(--accent-text);padding-top:5px}
-#creative.sec{padding-block:clamp(20px,3vw,32px)}
-#creative .creative-simple{max-width:720px;margin-inline:auto;gap:var(--s3);padding:clamp(16px,3vw,22px) clamp(18px,3vw,26px)}
-#creative .creative-simple h2{margin-top:6px;font-size:clamp(1.3rem,2.4vw,1.6rem)}
-#creative .creative-simple p{margin-top:6px;font-size:14px;line-height:1.55;max-width:46ch}
-#creative .creative-simple .btn{padding:9px 16px;font-size:14px}
 
 /* ---------- v4: aligned project dates, institute logos ---------- */
 .proj-top{flex-direction:column-reverse;align-items:flex-start;flex-wrap:nowrap;gap:8px}
@@ -676,3 +662,28 @@ main{counter-reset:sec}
 .about .counter{padding:18px 22px}
 @media (max-width:560px){.about .counter{padding:12px 12px}.about .counter strong{font-size:1.7rem}.about .counter span{font-size:12px}}
 
+
+
+/* ==========================================================
+   Creative work gallery (masonry, no cropping)
+   ========================================================== */
+.gfx-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:28px}
+.gfx{display:block;margin:0;overflow:hidden;border:1px solid var(--border);border-radius:18px;background:var(--surface);box-shadow:var(--shadow);color:inherit;text-decoration:none}
+.gfx:hover{translate:0 -5px;border-color:#9CC3E6;box-shadow:0 18px 34px -18px rgba(0,43,73,.45)}
+.gfx-media{position:relative;display:block;aspect-ratio:4/3;overflow:hidden;background:#eef4fb}
+.gfx-media img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .45s ease}
+.gfx:hover .gfx-media img{transform:scale(1.04)}
+.gfx-open{position:absolute;right:10px;top:10px;display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--primary);color:#fff;opacity:0;translate:0 -4px;transition:opacity .2s,translate .2s}
+.gfx-open svg{width:15px;height:15px}
+.gfx:hover .gfx-open,.gfx:focus-visible .gfx-open{opacity:1;translate:0 0}
+@media (hover:none){.gfx-open{opacity:1;translate:0 0}}
+.gfx-cap{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:54px;padding:12px 16px}
+.gfx-cap strong{font-size:15px;font-weight:700;line-height:1.3;color:#002B49}
+.gfx-cap small{flex:none;padding:3px 10px;border-radius:999px;background:var(--tag-bg);color:var(--primary);font-size:12px;font-weight:700}
+.gfx-more{display:flex;justify-content:center;margin-top:28px}
+@media (max-width:899px){.gfx-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:480px){.gfx-grid{grid-template-columns:1fr}}
+
+/* Technical skills: every card the same size */
+.skills{grid-auto-rows:1fr}
+@media (pointer:coarse) and (min-width:900px){.skills{grid-template-columns:repeat(3,minmax(0,1fr))}}
